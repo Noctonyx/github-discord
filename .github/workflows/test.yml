@@ -21,4 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ./
         with:
-          milliseconds: 1000
+          title: "Test Title"
+          text: "Test message content."
+          color: "#8090a0"
+          webhook: ${{secrets.WEBHOOK_URL}}

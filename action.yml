@@ -1,11 +1,19 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'github-discord'
+description: 'Github Discord Webhook Handler'
+author: 'Noctonyx'
 inputs:
-  milliseconds: # change this
+  webhook:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  title:
+    required: true
+    description: 'Message Title'
+    default: 'Message Title'
+  text:
+    required: true
+  color:
+    required: true
+    description: 'Message Color'
+    default: '#00b0f4'
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -1,16 +1,16 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import {Webhook, MessageBuilder} from 'discord-webhook-node'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const hook = new Webhook(core.getInput('webhook'))
+    const embed = new MessageBuilder()
+      .setTitle(core.getInput('title'))
+      .setColor((core.getInput('color') as unknown) as number)
+      .setText(core.getInput('text'))
+      .setTimestamp()
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    await hook.send(embed)
   } catch (error) {
     core.setFailed(error.message)
   }
