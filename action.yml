@@ -16,13 +16,13 @@ inputs:
     default: '#00b0f4'
   project:
     required: false
-    default: $GITHUB_REPOSITORY
+    default: ${{GITHUB_REPOSITORY}}
   branch:
     required: false
-    default: $GITHUB_REF
+    default: ${{GITHUB_REF}}
   workflow:
     required: false
-    default: $GITHUB_WORKFLOW
+    default: ${{GITHUB_WORKFLOW}}
 runs:
   using: 'node12'
   main: 'dist/index.js'
