@@ -7,9 +7,11 @@ async function run(): Promise<void> {
     const embed = new MessageBuilder()
       .setTitle(core.getInput('title'))
       .setColor((core.getInput('color') as unknown) as number)
-      .setText(core.getInput('text'))
+      .setDescription(core.getInput('text'))
+      .addField('Project', core.getInput('project'), true)
+      .addField('Branch', core.getInput('branch'), true)
+      .addField('Workflow', core.getInput('workflow'), true)
       .setTimestamp()
-
     await hook.send(embed)
   } catch (error) {
     core.setFailed(error.message)

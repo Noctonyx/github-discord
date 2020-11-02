@@ -181,6 +181,10 @@ function run() {
             const embed = new discord_webhook_node_1.MessageBuilder()
                 .setTitle(core.getInput('title'))
                 .setColor(core.getInput('color'))
+                .setDescription(core.getInput('text'))
+                .addField('Project', core.getInput('project'), true)
+                .addField('Branch', core.getInput('branch'), true)
+                .addField('Workflow', core.getInput('workflow'), true)
                 .setTimestamp();
             yield hook.send(embed);
         }
